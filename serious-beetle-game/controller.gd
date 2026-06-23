@@ -11,7 +11,10 @@ func _ready() -> void:
 	light.top_level = true;
 
 func _physics_process(delta: float) -> void:
-	var viewport = get_viewport();
+	mouse_pos = get_viewport().get_mouse_position();
+	mouse_pos = mouse_pos - Vector2(get_viewport().size)/2;
+	mouse_pos = mouse_pos.normalized();
 	
 	if(Input.is_action_pressed("move")):
-		angular_velocity.x -= 20*delta
+		linear_velocity.x -= mouse_pos.x*delta;
+		linear_velocity.z -= mouse_pos.y*delta;

@@ -1,12 +1,22 @@
 [gd_scene format=3 uid="uid://cksaa5ermxjp3"]
 
 [ext_resource type="Script" uid="uid://e4siu560qskq" path="res://controller.gd" id="1_5hfv0"]
+[ext_resource type="Texture2D" uid="uid://vkda4pyhfwr7" path="res://zohran.png" id="2_0bhed"]
+[ext_resource type="Texture2D" uid="uid://b4mbfg4cloapo" path="res://icon.svg" id="3_m0rpm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6xj6"]
+albedo_texture = ExtResource("3_m0rpm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0rpm"]
+albedo_texture = ExtResource("2_0bhed")
+uv1_scale = Vector3(2, 1, 1)
+uv1_offset = Vector3(0.5, 0, 0)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fr1sm"]
 radius = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hfv0"]
-albedo_color = Color(0.54509807, 1, 0.38431373, 1)
+albedo_color = Color(0.39607844, 0.31764707, 1, 1)
 
 [node name="Demo" type="Node3D" unique_id=1024487457]
 
@@ -15,12 +25,14 @@ transform = Transform3D(0.7198488, 0.4908247, -0.49082464, 0, 0.70710677, 0.7071
 current = true
 
 [node name="FlatPlane" type="CSGBox3D" parent="." unique_id=1113324136]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0043945313, 0, -0.13018799)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78637695, 0, 0.45433807)
+material_override = SubResource("StandardMaterial3D_c6xj6")
 use_collision = true
-size = Vector3(6.9990234, 1, 4.293091)
+size = Vector3(10.815918, 1, 14.117081)
 
 [node name="Controller" type="RigidBody3D" parent="." unique_id=1243827158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90559983, 0)
+angular_velocity = Vector3(0.0017453292, 0, 0.0017453292)
 script = ExtResource("1_5hfv0")
 
 [node name="Light" type="DirectionalLight3D" parent="Controller" unique_id=154881472]
@@ -31,16 +43,18 @@ sky_mode = 1
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.471273, 0)
 projection = 1
 current = true
-size = 1.5106118
 
 [node name="Ball" type="CSGSphere3D" parent="Controller" unique_id=1919362527]
+material_override = SubResource("StandardMaterial3D_m0rpm")
 radius = 0.2
 
 [node name="BallCollider" type="CollisionShape3D" parent="Controller" unique_id=72200709]
 shape = SubResource("SphereShape3D_fr1sm")
 debug_color = Color(0.7848577, 0.340603, 0.6867331, 0.92941177)
 
-[node name="Test" type="CSGBox3D" parent="Controller" unique_id=1913767671]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0016995072, -0.005091548, -0.13271785)
-size = Vector3(0.068481445, 0.46673584, 0.07751465)
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Controller" unique_id=1507046952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0050599575, 0.16775367)
+visible = false
+radius = 0.10058594
+height = 0.7813721
 material = SubResource("StandardMaterial3D_5hfv0")
