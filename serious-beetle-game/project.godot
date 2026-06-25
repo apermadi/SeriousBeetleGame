@@ -16,6 +16,10 @@ run/main_scene="uid://cksaa5ermxjp3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SizeManager="*uid://b5wpqowv8y6xr"
+
 [input]
 
 move={

@@ -1,17 +1,36 @@
 [gd_scene format=3 uid="uid://cksaa5ermxjp3"]
 
 [ext_resource type="Script" uid="uid://e4siu560qskq" path="res://controller.gd" id="1_5hfv0"]
-[ext_resource type="Texture2D" uid="uid://vkda4pyhfwr7" path="res://zohran.png" id="2_0bhed"]
+[ext_resource type="Texture2D" uid="uid://c1ncc2ov7sck5" path="res://Grass_12-256x256.png" id="1_m0rpm"]
 [ext_resource type="Script" uid="uid://c3u02c7mj8kb1" path="res://item_manager.gd" id="2_6bw2v"]
-[ext_resource type="Texture2D" uid="uid://b4mbfg4cloapo" path="res://icon.svg" id="3_m0rpm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6xj6"]
-albedo_texture = ExtResource("3_m0rpm")
+albedo_texture = ExtResource("1_m0rpm")
+texture_filter = 0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c6xj6"]
+friction = 0.75
+rough = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0rpm"]
-albedo_texture = ExtResource("2_0bhed")
-uv1_scale = Vector3(2, 1, 1)
-uv1_offset = Vector3(0.5, 0, 0)
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.16763428, 0.110598944, 0.034598514, 1)
+grow = true
+grow_amount = 0.014
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bhed"]
+next_pass = SubResource("StandardMaterial3D_m0rpm")
+albedo_color = Color(0.35, 0.22749999, 0, 1)
+stencil_mode = 1
+stencil_flags = 2
+stencil_color = Color(0.16763428, 0.110598944, 0.034598514, 1)
+stencil_outline_thickness = 0.014
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fr1sm"]
 radius = 0.3
@@ -23,35 +42,39 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 sky_mode = 1
 
 [node name="DebugCamera" type="Camera3D" parent="." unique_id=2079204933]
-transform = Transform3D(0.7198488, 0.4908247, -0.49082464, 0, 0.70710677, 0.7071068, 0.6941309, -0.50901, 0.50900996, -1.4345733, 3, 1.7429223)
+transform = Transform3D(0.70710677, -0.3535534, 0.61237246, 3.9927572e-09, 0.86602545, 0.5, -0.7071068, -0.3535534, 0.61237246, 5, 5, 5)
 current = true
+size = 12.0
 
 [node name="FlatPlane" type="CSGBox3D" parent="." unique_id=1113324136]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78637695, -0.5286574, 0.45433807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_c6xj6")
 use_collision = true
-size = Vector3(10.815918, 1, 14.117081)
+size = Vector3(20, 1, 20)
 
 [node name="ItemManager" type="Node3D" parent="." unique_id=1258996616]
 script = ExtResource("2_6bw2v")
-field_size = Vector3(9, 1, 12)
 
 [node name="Controller" type="RigidBody3D" parent="." unique_id=1243827158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3794607, 0)
 collision_layer = 3
 collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_c6xj6")
 angular_velocity = Vector3(0.0017453292, 0, 0.0017453292)
 script = ExtResource("1_5hfv0")
 
 [node name="Camera" type="Camera3D" parent="Controller" unique_id=1963082170]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.471273, 0)
 projection = 1
-size = 1.45
+current = true
+size = 2.1774487
 
 [node name="Ball" type="CSGSphere3D" parent="Controller" unique_id=1919362527]
-material_override = SubResource("StandardMaterial3D_m0rpm")
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_0bhed")
 radius = 0.2
 
 [node name="BallCollider" type="CollisionShape3D" parent="Controller" unique_id=72200709]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
 shape = SubResource("SphereShape3D_fr1sm")
 debug_color = Color(0.7848577, 0.340603, 0.6867331, 0.92941177)
