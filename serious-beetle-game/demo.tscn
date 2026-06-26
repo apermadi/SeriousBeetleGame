@@ -38,22 +38,38 @@ radius = 0.3
 [node name="Demo" type="Node3D" unique_id=1024487457]
 
 [node name="WorldLight" type="DirectionalLight3D" parent="." unique_id=154881472]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.90559983, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.9055996, 0)
 sky_mode = 1
 
 [node name="DebugCamera" type="Camera3D" parent="." unique_id=2079204933]
-transform = Transform3D(0.70710677, -0.3535534, 0.61237246, 3.9927572e-09, 0.86602545, 0.5, -0.7071068, -0.3535534, 0.61237246, 5, 5, 5)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 13, 0)
+projection = 1
 current = true
-size = 12.0
+size = 19.0
 
 [node name="FlatPlane" type="CSGBox3D" parent="." unique_id=1113324136]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.92578125, 0)
 material_override = SubResource("StandardMaterial3D_c6xj6")
 use_collision = true
-size = Vector3(20, 1, 20)
+size = Vector3(45, 1, 35)
 
-[node name="ItemManager" type="Node3D" parent="." unique_id=1258996616]
+[node name="ItemManager" type="Node3D" parent="." unique_id=1258996616 node_paths=PackedStringArray("meter")]
 script = ExtResource("2_6bw2v")
+meter = NodePath("Meter")
+
+[node name="Meter" type="ProgressBar" parent="ItemManager" unique_id=1488592774]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -546.0
+offset_top = 271.0
+offset_right = -287.0
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+rounded = true
 
 [node name="Controller" type="RigidBody3D" parent="." unique_id=1243827158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3794607, 0)
@@ -62,15 +78,17 @@ collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_c6xj6")
 angular_velocity = Vector3(0.0017453292, 0, 0.0017453292)
 script = ExtResource("1_5hfv0")
+camera_scalar = 1.7
+ball_scalar = 1.4
 
 [node name="Camera" type="Camera3D" parent="Controller" unique_id=1963082170]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.471273, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 16.471273, 0)
 projection = 1
 current = true
-size = 2.1774487
+size = 2.17
 
 [node name="Ball" type="CSGSphere3D" parent="Controller" unique_id=1919362527]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_0bhed")
 radius = 0.2
 

@@ -16,7 +16,10 @@ collision_mask = 2
 script = ExtResource("1_ttk8k")
 dung = ExtResource("2_unjj8")
 baby_bug = ExtResource("2_ys7tt")
+beetle = ExtResource("2_kg5e7")
 zohran = ExtResource("3_unjj8")
+juniper = ExtResource("2_kg5e7")
+thing = ExtResource("2_kg5e7")
 metadata/weight = 1
 metadata/wave = 0
 

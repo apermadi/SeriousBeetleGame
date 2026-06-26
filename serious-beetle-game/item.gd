@@ -6,7 +6,10 @@ extends Area3D
 
 @export var dung: Texture;
 @export var baby_bug: Texture;
+@export var beetle: Texture;
 @export var zohran: Texture;
+@export var juniper: Texture;
+@export var thing: Texture;
 var texture_map: Array;
 
 signal stage_time;
@@ -15,9 +18,12 @@ signal stage_time;
 func _ready() -> void:
 	texture_map.push_back(dung);
 	texture_map.push_back(baby_bug);
+	texture_map.push_back(beetle);
 	texture_map.push_back(zohran);
+	texture_map.push_back(juniper);
+	texture_map.push_back(thing);
 	
-	stage_time.connect(SizeManager._new_stage)
+	stage_time.connect(SizeManager._new_stage);
 	
 	# TODO: ensure a relatively sane distribution of items somehow
 	match SizeManager.stage:
@@ -27,7 +33,12 @@ func _ready() -> void:
 			sprite.texture = texture_map[rand_weight-1];
 			SizeManager.max_weight += rand_weight;
 		2:
-			var rand_weight = randi_range(3, 5);
+			var rand_weight = randi_range(3, 4);
+			set_meta("weight", rand_weight);
+			sprite.texture = texture_map[rand_weight-1];
+			SizeManager.max_weight += rand_weight;
+		3:
+			var rand_weight = randi_range(5, 6);
 			set_meta("weight", rand_weight);
 			sprite.texture = texture_map[rand_weight-1];
 			SizeManager.max_weight += rand_weight;
@@ -49,4 +60,5 @@ func _on_body_entered(body: Node3D) -> void:
 	
 	if (SizeManager.player_weight >= SizeManager.max_weight):
 		SizeManager.stage += 1;
+		body.ascend();
 		stage_time.emit();
