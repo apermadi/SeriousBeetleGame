@@ -2,11 +2,82 @@
 
 [ext_resource type="Script" uid="uid://e4siu560qskq" path="res://controller.gd" id="1_5hfv0"]
 [ext_resource type="Texture2D" uid="uid://c1ncc2ov7sck5" path="res://Grass_12-256x256.png" id="1_m0rpm"]
+[ext_resource type="AudioStream" uid="uid://d3uylsrtosj5v" path="res://one_0.ogg" id="1_n4w22"]
 [ext_resource type="Script" uid="uid://c3u02c7mj8kb1" path="res://item_manager.gd" id="2_6bw2v"]
+[ext_resource type="Script" uid="uid://bgvpp60n8c7cg" path="res://plane.gd" id="2_c6xj6"]
+[ext_resource type="Material" uid="uid://duqysjw1myj61" path="res://starfield.tres" id="3_6bw2v"]
+[ext_resource type="FontFile" uid="uid://c6vsmpi32o7j4" path="res://Abaddon Bold.ttf" id="4_gxmxl"]
+[ext_resource type="PackedScene" uid="uid://kwd27lyudq4n" path="res://Earth.glb" id="6_kem5a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6xj6"]
+transparency = 1
 albedo_texture = ExtResource("1_m0rpm")
 texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_n4w22"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Approach:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d4o4o"]
+resource_name = "fade_screen"
+length = 8.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6666666, 6, 8.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Approach:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6667, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d4o4o"]
+_data = {
+&"RESET": SubResource("Animation_n4w22"),
+&"fade_screen": SubResource("Animation_d4o4o")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gxmxl"]
+material = ExtResource("3_6bw2v")
+size = Vector2(90, 80)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c6xj6"]
 friction = 0.75
@@ -35,27 +106,127 @@ stencil_outline_thickness = 0.014
 [sub_resource type="SphereShape3D" id="SphereShape3D_fr1sm"]
 radius = 0.3
 
+[sub_resource type="Animation" id="Animation_884kg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gdsc3"]
+resource_name = "rotate"
+length = 25.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_svejp"]
+_data = {
+&"RESET": SubResource("Animation_884kg"),
+&"rotate": SubResource("Animation_gdsc3")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gxmxl"]
+
+[sub_resource type="Animation" id="Animation_kem5a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.96, 0.9312, 0.93167996, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gxmxl"]
+resource_name = "fade_in"
+length = 2.5666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.562),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.96, 0.9312, 0.93167996, 0), Color(0.96, 0.9312, 0.93167996, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n4w22"]
+_data = {
+&"RESET": SubResource("Animation_kem5a"),
+&"fade_in": SubResource("Animation_gxmxl")
+}
+
 [node name="Demo" type="Node3D" unique_id=1024487457]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=926907989]
+stream = ExtResource("1_n4w22")
+autoplay = true
 
 [node name="WorldLight" type="DirectionalLight3D" parent="." unique_id=154881472]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.9055996, 0)
 sky_mode = 1
 
 [node name="DebugCamera" type="Camera3D" parent="." unique_id=2079204933]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 13, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.0576172, 20, -23.922436)
 projection = 1
 current = true
-size = 19.0
+size = 35.754
 
-[node name="FlatPlane" type="CSGBox3D" parent="." unique_id=1113324136]
+[node name="Final" type="Camera3D" parent="." unique_id=1732680611]
+transform = Transform3D(0.702833, 0.1867186, -0.6864124, -0.042062566, 0.97415674, 0.22192234, 0.71011025, -0.12710206, 0.69252336, -15.559467, 6.6032343, 10.501374)
+projection = 1
+fov = 35.0
+size = 6.589
+
+[node name="FlatPlane" type="CSGBox3D" parent="." unique_id=1113324136 node_paths=PackedStringArray("star_plane", "earth", "earth_ani", "light", "player_camera", "final_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.92578125, 0)
-material_override = SubResource("StandardMaterial3D_c6xj6")
 use_collision = true
-size = Vector3(55, 1, 45)
+size = Vector3(60, 1, 70)
+material = SubResource("StandardMaterial3D_c6xj6")
+script = ExtResource("2_c6xj6")
+star_plane = NodePath("../Stars")
+earth = NodePath("../Earth2")
+earth_ani = NodePath("../Earth2/Rotate")
+light = NodePath("../WorldLight")
+player_camera = NodePath("../Controller/Camera")
+final_camera = NodePath("../Final")
 
-[node name="ItemManager" type="Node3D" parent="." unique_id=1258996616 node_paths=PackedStringArray("meter")]
+[node name="ItemManager" type="Node3D" parent="." unique_id=1258996616 node_paths=PackedStringArray("controller", "environment", "meter")]
 script = ExtResource("2_6bw2v")
+controller = NodePath("../Controller")
+environment = NodePath("../FlatPlane")
 meter = NodePath("Meter")
+
+[node name="AnimationText" type="AnimationPlayer" parent="ItemManager" unique_id=88757213]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_d4o4o")
 
 [node name="Meter" type="ProgressBar" parent="ItemManager" unique_id=1488592774]
 anchors_preset = 8
@@ -71,23 +242,68 @@ grow_horizontal = 2
 grow_vertical = 2
 rounded = true
 
-[node name="Controller" type="RigidBody3D" parent="." unique_id=1243827158]
+[node name="ColorRect" type="ColorRect" parent="ItemManager" unique_id=1505711998]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -602.0
+offset_top = -341.0
+offset_right = 610.0
+offset_bottom = 349.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Approach" type="Label" parent="ItemManager" unique_id=1776114269]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = 259.5
+offset_right = 184.0
+offset_bottom = 295.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_fonts/font = ExtResource("4_gxmxl")
+theme_override_font_sizes/font_size = 32
+text = "go on...get what you seek."
+
+[node name="Timer" type="Timer" parent="ItemManager" unique_id=2098072899]
+process_mode = 3
+wait_time = 2.6999999999999997
+one_shot = true
+
+[node name="Stars" type="MeshInstance3D" parent="." unique_id=366390482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.508297, -1.1964836, -23.765226)
+mesh = SubResource("PlaneMesh_gxmxl")
+
+[node name="Controller" type="RigidBody3D" parent="." unique_id=1243827158 node_paths=PackedStringArray("earth")]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3794607, 0)
 collision_layer = 3
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_c6xj6")
 angular_velocity = Vector3(0.0017453292, 0, 0.0017453292)
 script = ExtResource("1_5hfv0")
+earth = NodePath("../Earth2")
 camera_scalar = 1.7
 ball_scalar = 1.4
 
 [node name="Camera" type="Camera3D" parent="Controller" unique_id=1963082170]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 16.471273, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 29.568525, 0)
 projection = 1
 current = true
-size = 2.17
+size = 2.177
 
 [node name="Ball" type="CSGSphere3D" parent="Controller" unique_id=1919362527]
+process_mode = 3
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_0bhed")
 radius = 0.2
@@ -96,3 +312,43 @@ radius = 0.2
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
 shape = SubResource("SphereShape3D_fr1sm")
 debug_color = Color(0.7848577, 0.340603, 0.6867331, 0.92941177)
+
+[node name="Earth2" parent="." unique_id=2101537442 instance=ExtResource("6_kem5a")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 7.66, 0, -16.637)
+
+[node name="Rotate" type="AnimationPlayer" parent="Earth2" unique_id=179763385]
+libraries/ = SubResource("AnimationLibrary_svejp")
+
+[node name="Area3D" type="Area3D" parent="Earth2" unique_id=1966640043]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Earth2/Area3D" unique_id=1231888855]
+shape = SubResource("SphereShape3D_gxmxl")
+
+[node name="Final2" type="Control" parent="." unique_id=1682148896]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="End" type="AnimationPlayer" parent="Final2" unique_id=1298072177]
+libraries/ = SubResource("AnimationLibrary_n4w22")
+
+[node name="ColorRect" type="ColorRect" parent="Final2" unique_id=948730829]
+layout_mode = 0
+offset_left = -586.0
+offset_top = -321.0
+offset_right = 613.0
+offset_bottom = 358.0
+color = Color(0.96, 0.9312, 0.93167996, 0)
+
+[connection signal="animation_finished" from="ItemManager/AnimationText" to="ItemManager" method="_on_animation_text_animation_finished"]
+[connection signal="timeout" from="ItemManager/Timer" to="ItemManager" method="_on_timer_timeout"]

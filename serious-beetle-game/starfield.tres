@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://duqysjw1myj61"]
+
+[ext_resource type="Shader" uid="uid://bjlrhx8vmbs1m" path="res://stars.gdshader" id="1_j4ewm"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j4ewm")
+shader_parameter/background_color = Color(0.0102, 0.02016, 0.06, 1)
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/density = 1.5249999614175
+shader_parameter/layer_parascale = 2
+shader_parameter/star_speed = Vector2(0, 0)
+shader_parameter/star_wave = Vector2(0, 0)
+shader_parameter/star_size = 1.999999955296
+shader_parameter/star_rotate_speed = 0.026000143735000147
+shader_parameter/twinkle_effect = 0.56999998725936
+shader_parameter/twinkle_speed = 0.3
+shader_parameter/pixelate_enabled = true
+shader_parameter/pixelate_count = 1000.0

@@ -3,6 +3,7 @@
 extends Area3D
 
 @onready var sprite: Sprite3D = $ItemSprite;
+@onready var audio: AudioStreamPlayer = $ItemSFX;
 
 @export var dung: Texture;
 @export var baby_bug: Texture;
@@ -10,7 +11,9 @@ extends Area3D
 @export var zohran: Texture;
 @export var juniper: Texture;
 @export var thing: Texture;
+
 var texture_map: Array;
+var sfx_map: Array;
 
 signal stage_time;
 
@@ -53,12 +56,13 @@ func _on_body_entered(body: Node3D) -> void:
 	SizeManager.update_player(get_meta("weight"));
 	remove_child(sprite);
 	sprite.scale = Vector3(0.05, 0.05, 0.05);
-	body.add_child(sprite);
+	# body.add_child(sprite);
 	
 	# TODO: spawn sprite on random point on edge or at the edge of the sphere. whatever is easier
 	queue_free();
 	
 	if (SizeManager.player_weight >= SizeManager.max_weight):
 		SizeManager.stage += 1;
-		body.ascend();
+		if (SizeManager.stage < 4):
+			body.ascend();
 		stage_time.emit();
