@@ -35,22 +35,22 @@ func spawn_stage(curr_stage: int):
 		1:
 			print("stage one");
 			# 7
-			for i in range(1):
+			for i in range(7):
 				item_inst = item.instantiate();
-				# item_inst.position = Vector3(randf_range(-2.5, 2.8), 0.0, randf_range(-2.0, 2.0));
+				item_inst.position = Vector3(randf_range(-2.5, 2.8), 0.0, randf_range(-2.0, 2.0));
 				add_child(item_inst);
 		2:
 			print("stage two");
 			for i in range(9):
 				item_inst = item.instantiate();
-				# item_inst.position = Vector3(randf_range(-3.9, 4.0), 0.0, randf_range(-4.0, 4.0));
+				item_inst.position = Vector3(randf_range(-3.9, 4.0), 0.0, randf_range(-4.0, 4.0));
 				add_child(item_inst);
 		3:
 			print("stage three");
 			for i in range(11):
 				item_inst = item.instantiate();
-				# item_inst.position = Vector3(randf_range(-5.8, 6.2), 0.0, randf_range(-6.0, 6.0));
-				add_child(item_inst);
+				item_inst.position = Vector3(randf_range(-5.8, 6.2), 0.0, randf_range(-6.0, 6.0));
+				add_child(item_inst);	
 		4:
 			print("final");
 			AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true);

@@ -8,8 +8,8 @@ extends Area3D
 @export var dung: Texture;
 @export var baby_bug: Texture;
 @export var beetle: Texture;
-@export var zohran: Texture;
-@export var juniper: Texture;
+@export var contemporary: Texture;
+@export var puppy: Texture;
 @export var thing: Texture;
 
 var texture_map: Array;
@@ -22,9 +22,9 @@ func _ready() -> void:
 	texture_map.push_back(dung);
 	texture_map.push_back(baby_bug);
 	texture_map.push_back(beetle);
-	texture_map.push_back(zohran);
-	texture_map.push_back(juniper);
 	texture_map.push_back(thing);
+	texture_map.push_back(puppy);
+	texture_map.push_back(contemporary);
 	
 	stage_time.connect(SizeManager._new_stage);
 	
@@ -34,16 +34,21 @@ func _ready() -> void:
 			var rand_weight = randi_range(1, 2);
 			set_meta("weight", rand_weight);
 			sprite.texture = texture_map[rand_weight-1];
+			if (sprite.texture == baby_bug):
+				sprite.flip_h = true;
+				sprite.scale = Vector3(2.0, 2.0, 2.0);
 			SizeManager.max_weight += rand_weight;
 		2:
 			var rand_weight = randi_range(3, 4);
 			set_meta("weight", rand_weight);
 			sprite.texture = texture_map[rand_weight-1];
+			sprite.scale = Vector3(2.0, 2.0, 2.0);
 			SizeManager.max_weight += rand_weight;
 		3:
 			var rand_weight = randi_range(5, 6);
 			set_meta("weight", rand_weight);
 			sprite.texture = texture_map[rand_weight-1];
+			sprite.scale = Vector3(2.5, 2.5, 2.5);
 			SizeManager.max_weight += rand_weight;
 	
 

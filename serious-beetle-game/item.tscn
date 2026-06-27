@@ -4,7 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://b4mbfg4cloapo" path="res://icon.svg" id="2_kg5e7"]
 [ext_resource type="Texture2D" uid="uid://qvssmkuhkwel" path="res://dung.png" id="2_unjj8"]
 [ext_resource type="Texture2D" uid="uid://bhdnumisxlh5" path="res://baby_bug.png" id="2_ys7tt"]
-[ext_resource type="Texture2D" uid="uid://vkda4pyhfwr7" path="res://zohran.png" id="3_unjj8"]
+[ext_resource type="Texture2D" uid="uid://dbxi34ratgwo3" path="res://better_baby_bug.png" id="3_unjj8"]
+[ext_resource type="Texture2D" uid="uid://57iltel3pua3" path="res://contemporary.png" id="5_p0x8t"]
+[ext_resource type="Texture2D" uid="uid://da4ir84dagi7v" path="res://puppy.png" id="6_b0ia4"]
+[ext_resource type="Texture2D" uid="uid://wqa8bjj4y2b" path="res://silly.png" id="7_m4nph"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m0rpm"]
 radius = 0.9874777
@@ -15,11 +18,11 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ttk8k")
 dung = ExtResource("2_unjj8")
-baby_bug = ExtResource("2_ys7tt")
-beetle = ExtResource("2_kg5e7")
-zohran = ExtResource("3_unjj8")
-juniper = ExtResource("2_kg5e7")
-thing = ExtResource("2_kg5e7")
+baby_bug = ExtResource("3_unjj8")
+beetle = ExtResource("2_ys7tt")
+contemporary = ExtResource("5_p0x8t")
+puppy = ExtResource("6_b0ia4")
+thing = ExtResource("7_m4nph")
 metadata/weight = 1
 metadata/wave = 0
 
