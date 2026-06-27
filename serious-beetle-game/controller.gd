@@ -34,12 +34,11 @@ func _physics_process(_delta: float) -> void:
 		if(Input.is_action_pressed("move")):
 			linear_velocity.x -= mouse_pos.x*0.1;
 			linear_velocity.z -= mouse_pos.y*0.1;
-	else:	
-		if (Input.is_action_pressed("move")):
-			print("hi");
-			# look_at(earth.global_position, Vector3.UP, true);
+	#else:	
+		#if (Input.is_action_pressed("move")):
+			## look_at(earth.global_position, Vector3.UP);
 			#linear_velocity.x += delta*0.6;
-			#linear_velocity.z -= delta*0.6;
+			#linear_velocity.z += delta*0.6;
 
 
 func ascend() -> void:
@@ -56,8 +55,9 @@ func ascend() -> void:
 
 func final_stage() -> void:
 	freeze = true;
+	position = Vector3(0.0, 0.0, 0.0);
 	linear_velocity = Vector3.ZERO;
 	angular_velocity = Vector3.ZERO;
-	position = Vector3(0.0, 0.379, 0.0);
 	rotation = Vector3.ZERO;
 	ball.scale *= ball_scalar;
+	# freeze = false;

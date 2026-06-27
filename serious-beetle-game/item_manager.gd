@@ -3,7 +3,7 @@
 extends Node3D
 
 @onready var ani: AnimationPlayer = $AnimationText
-@onready var rect: ColorRect = $ColorRect
+@onready var rect: ColorRect = $Black
 @onready var timer: Timer = $Timer;
 
 @export var controller: RigidBody3D;
@@ -37,19 +37,19 @@ func spawn_stage(curr_stage: int):
 			# 7
 			for i in range(1):
 				item_inst = item.instantiate();
-				item_inst.position = Vector3(randf_range(-2.5, 2.8), 0.0, randf_range(-2.0, 2.0));
+				# item_inst.position = Vector3(randf_range(-2.5, 2.8), 0.0, randf_range(-2.0, 2.0));
 				add_child(item_inst);
 		2:
 			print("stage two");
 			for i in range(9):
 				item_inst = item.instantiate();
-				item_inst.position = Vector3(randf_range(-3.9, 4.0), 0.0, randf_range(-4.0, 4.0));
+				# item_inst.position = Vector3(randf_range(-3.9, 4.0), 0.0, randf_range(-4.0, 4.0));
 				add_child(item_inst);
 		3:
 			print("stage three");
 			for i in range(11):
 				item_inst = item.instantiate();
-				item_inst.position = Vector3(randf_range(-5.8, 6.2), 0.0, randf_range(-6.0, 6.0));
+				# item_inst.position = Vector3(randf_range(-5.8, 6.2), 0.0, randf_range(-6.0, 6.0));
 				add_child(item_inst);
 		4:
 			print("final");
@@ -68,6 +68,9 @@ func update_meter(weight: float) -> void:
 func _on_animation_text_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "fade_screen"): 
 		get_tree().paused = false;
+		ani.play("pull_forward");
+	elif (anim_name == "pull_forward"):
+		get_tree().change_scene_to_file("res://ending.tscn");
 
 
 func _on_timer_timeout() -> void:

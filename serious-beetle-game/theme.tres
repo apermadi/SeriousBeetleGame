@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dx7dflrye2061"]
+
+[ext_resource type="FontFile" uid="uid://c6vsmpi32o7j4" path="res://Abaddon Bold.ttf" id="1_e1x85"]
+
+[resource]
+default_font = ExtResource("1_e1x85")
+default_font_size = 32

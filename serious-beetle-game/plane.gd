@@ -30,5 +30,5 @@ func switch_ground() -> void:
 func switch_camera() -> void:
 	player_camera.current = false;
 	final_camera.current = true;
-	light.rotation.x = -155;
+	light.rotation.x = deg_to_rad(-39.5);
 	player_camera.queue_free()

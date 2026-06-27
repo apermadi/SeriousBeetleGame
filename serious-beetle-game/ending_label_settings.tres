@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dtaw5mj4xj1xo"]
+
+[ext_resource type="FontFile" uid="uid://c6vsmpi32o7j4" path="res://Abaddon Bold.ttf" id="1_8vk2d"]
+
+[resource]
+font = ExtResource("1_8vk2d")
+font_size = 32
+font_color = Color(0.04755766, 0.047557645, 0.047557645, 1)

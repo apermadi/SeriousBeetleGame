@@ -59,6 +59,7 @@ func _on_body_entered(body: Node3D) -> void:
 	# body.add_child(sprite);
 	
 	# TODO: spawn sprite on random point on edge or at the edge of the sphere. whatever is easier
+	# appended: if i can do it in a reasonable amoutn of time
 	queue_free();
 	
 	if (SizeManager.player_weight >= SizeManager.max_weight):
