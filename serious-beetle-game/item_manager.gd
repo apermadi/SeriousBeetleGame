@@ -3,7 +3,7 @@
 extends Node3D
 
 @onready var ani: AnimationPlayer = $AnimationText
-@onready var rect: ColorRect = $Black
+@onready var rect: ColorRect = $Control/Black
 @onready var timer: Timer = $Timer;
 
 @export var controller: RigidBody3D;

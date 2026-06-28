@@ -19,7 +19,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Black:color")
+tracks/0/path = NodePath("Control/Black:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +31,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Approach:theme_override_colors/font_color")
+tracks/1/path = NodePath("Control/Approach:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -67,7 +67,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("White:color")
+tracks/4/path = NodePath("Control/White:color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -83,7 +83,7 @@ length = 8.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Black:color")
+tracks/0/path = NodePath("Control/Black:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -95,7 +95,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Approach:theme_override_colors/font_color")
+tracks/1/path = NodePath("Control/Approach:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -135,7 +135,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("White:color")
+tracks/2/path = NodePath("Control/White:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -147,7 +147,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Approach:theme_override_colors/font_color")
+tracks/3/path = NodePath("Control/Approach:theme_override_colors/font_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -274,68 +274,81 @@ final_camera = NodePath("../Final")
 script = ExtResource("2_6bw2v")
 controller = NodePath("../Controller")
 environment = NodePath("../FlatPlane")
-meter = NodePath("Meter")
+meter = NodePath("Control/Meter")
 
 [node name="AnimationText" type="AnimationPlayer" parent="ItemManager" unique_id=88757213]
 process_mode = 3
 libraries/ = SubResource("AnimationLibrary_d4o4o")
 
-[node name="Meter" type="ProgressBar" parent="ItemManager" unique_id=1488592774]
+[node name="Control" type="Control" parent="ItemManager" unique_id=271255003]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Meter" type="ProgressBar" parent="ItemManager/Control" unique_id=1488592774]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -546.0
-offset_top = 271.0
-offset_right = -287.0
-offset_bottom = 298.0
+offset_left = -552.0
+offset_top = 259.0
+offset_right = -293.0
+offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
 rounded = true
 
-[node name="Black" type="ColorRect" parent="ItemManager" unique_id=1505711998]
+[node name="Black" type="ColorRect" parent="ItemManager/Control" unique_id=1505711998]
 process_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -602.0
-offset_top = -341.0
-offset_right = 610.0
-offset_bottom = 349.0
+offset_left = -637.0
+offset_top = -346.0
+offset_right = 647.0
+offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="White" type="ColorRect" parent="ItemManager" unique_id=948730829]
+[node name="White" type="ColorRect" parent="ItemManager/Control" unique_id=948730829]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -599.5
-offset_top = -339.5
-offset_right = 599.5
-offset_bottom = 339.5
+offset_left = -618.0
+offset_top = -343.0
+offset_right = 645.0
+offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.96, 0.9312, 0.93167996, 0)
 
-[node name="Approach" type="Label" parent="ItemManager" unique_id=1776114269]
+[node name="Approach" type="Label" parent="ItemManager/Control" unique_id=1776114269]
 process_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -184.0
-offset_top = 259.5
-offset_right = 184.0
-offset_bottom = 295.5
+offset_top = 261.0
+offset_right = 182.0
+offset_bottom = 297.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(183, 0)
 theme_override_colors/font_color = Color(1, 1, 1, 0)
 theme_override_fonts/font = ExtResource("4_gxmxl")
 theme_override_font_sizes/font_size = 32

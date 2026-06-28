@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 
 SizeManager="*uid://b5wpqowv8y6xr"
 
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=640
+window/stretch/mode="canvas_items"
+
 [input]
 
 move={
